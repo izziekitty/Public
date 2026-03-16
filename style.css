@@ -1,0 +1,115 @@
+/* =========================================================
+   BASE THEME & LAYOUT (Catppuccin Macchiato)
+   ========================================================= */
+body { font-family: system-ui, -apple-system, sans-serif; background: #1e1e2e; color: #cdd6f4; margin: 2rem; line-height: 1.5; }
+.container { max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
+
+.header-container { display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin-bottom: 0.5rem; }
+.logo { max-height: 80px; width: auto; }
+.header-text { display: flex; flex-direction: column; }
+h1 { text-align: left; color: #cba6f7; margin: 0; font-size: 2.2rem; line-height: 1.2; }
+.subtitle { color: #a6adc8; margin: 0; font-size: 1.2rem; font-weight: 500; display: flex; align-items: center; gap: 1rem; }
+h2 { margin-top: 0; color: #89b4fa; border-bottom: 2px solid #45475a; padding-bottom: 0.5rem; font-size: 1.25rem; display: flex; align-items: center; }
+
+.info-link { font-size: 0.85rem; color: #89b4fa; text-decoration: none; font-weight: normal; padding: 0.2rem 0.6rem; border: 1px solid #45475a; border-radius: 4px; background: #1e1e2e; transition: background 0.2s ease; }
+.info-link:hover { background: #45475a; color: #cdd6f4; }
+.card-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #45475a; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+.card-header h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+/* =========================================================
+   CARDS & TABLES
+   ========================================================= */
+.card { background: #313244; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
+.interactive-card { border-left: 4px solid transparent; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
+.interactive-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px rgba(0,0,0,0.3); border-left: 4px solid #cba6f7; }
+
+/* NYCDOE Special Theme */
+.special-card { background: linear-gradient(145deg, #1e1e2e, #313244); padding: 1.5rem; border-radius: 8px; box-shadow: 0 8px 16px rgba(0,0,0,0.4); border: 1px solid #cba6f7; margin-top: 1rem; }
+.special-title { color: #cba6f7; font-size: 1.8rem; border-bottom: 2px solid #cba6f7; padding-bottom: 0.5rem; text-align: center; margin-bottom: 1.5rem; margin-top: 0; }
+
+table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #45475a; vertical-align: middle; }
+th { color: #a6adc8; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.05em; }
+.center { text-align: center; }
+.update-text { font-size: 0.9rem; color: #bac2de; }
+
+.spreadsheet-table th, .spreadsheet-table td { border: 1px solid #45475a; padding: 0.7rem; text-align: right; }
+.spreadsheet-table th { background: #1e1e2e; color: #a6adc8; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; }
+.spreadsheet-table th:first-child, .spreadsheet-table td:first-child { text-align: left; font-weight: bold; color: #bac2de; }
+
+/* =========================================================
+   CHART ELEMENTS (Legends, Overlays, Ops, Financial)
+   ========================================================= */
+.legend { display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; margin-top: 1rem; font-size: 0.9rem; color: #a6adc8; }
+.legend-item { display: flex; align-items: center; gap: 0.5rem; }
+.legend-box { width: 15px; height: 15px; border-radius: 2px; }
+
+/* Financial Chart Styling (Scoped safely so it doesn't break Sales Timelines) */
+.chart-wrapper { display: flex; width: 100%; height: 500px; padding: 1rem 0; gap: 10px; justify-content: space-around; align-items: center; overflow-x: auto; }
+.chart-col { flex: 1; display: flex; flex-direction: column; position: relative; height: 100%; }
+.half { height: 40%; width: 100%; position: relative; }
+.top-half { border-bottom: 2px solid #585b70; }
+
+/* Notice these are scoped inside .half now! */
+.half .bar { position: absolute; border-radius: 2px; left: 50%; transform: translateX(-50%); transition: height 0.3s ease; }
+.top-half .bar { bottom: 0; }
+.bottom-half .bar { top: 0; }
+.half .prior { width: 80%; z-index: 1; } 
+.half .curr { width: 40%; z-index: 2; box-shadow: 0 0 5px rgba(0,0,0,0.3); }
+
+.labels { height: 25%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 15px; }
+.month-label { font-size: 0.95rem; font-weight: bold; color: #bac2de; white-space: nowrap; }
+.pct-label { font-size: 0.85rem; font-weight: bold; margin-top: 4px; padding: 2px 6px; background: #1e1e2e; border-radius: 4px; }
+.net-inc-label { font-size: 0.85rem; font-weight: bold; margin-top: 4px; white-space: nowrap; }
+
+/* Ops Chart Styling */
+.ops-chart-wrapper { display: flex; width: 100%; height: 350px; padding: 1rem 0; gap: 10px; justify-content: space-around; align-items: flex-end; overflow-x: auto; scroll-behavior: smooth; }
+.ops-chart-col { flex: 1; display: flex; flex-direction: column; position: relative; height: 100%; min-width: 80px; }
+.ops-bar-area { height: 75%; width: 100%; position: relative; border-bottom: 2px solid #585b70; }
+.ops-bar { position: absolute; border-radius: 4px 4px 0 0; bottom: 0; left: 50%; transform: translateX(-50%); transition: height 0.3s ease; }
+.ops-prior { width: 80%; z-index: 1; } 
+.ops-curr { width: 40%; z-index: 2; box-shadow: 0 0 5px rgba(0,0,0,0.3); }
+.ops-labels { height: 25%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; margin-top: 8px; }
+.ops-month-label { font-size: 0.95rem; font-weight: bold; color: #bac2de; white-space: nowrap; }
+.ops-pct-label { font-size: 0.85rem; font-weight: bold; margin-top: 4px; padding: 2px 6px; background: #1e1e2e; border-radius: 4px; }
+.ops-val-label { font-size: 1.05rem; margin-top: 6px; white-space: nowrap; }
+
+/* =========================================================
+   SALES TIMELINE GRAPH
+   ========================================================= */
+.timeline { display: inline-flex; align-items: flex-end; justify-content: center; height: 20px; gap: 2px; width: 100%; }
+
+/* Scoped specifically for timelines so it overrides generic bars */
+.timeline .bar { position: static; transform: none; width: 8px; border-radius: 1px; flex-shrink: 0; }
+.timeline .bar.g { height: 20px; background: #a6e3a1; }
+.timeline .bar.y { height: 12px; background: #f9e2af; }
+.timeline .bar.r { height: 6px; background: #f38ba8; }
+.timeline .bar.empty { height: 20px; background: transparent; }
+
+.center-diamond { font-size: 15px; line-height: 20px; display: inline-flex; align-items: center; justify-content: center; width: 15px; height: 20px; flex-shrink: 0; }
+.center-diamond.g { color: #a6e3a1; text-shadow: 0 0 5px rgba(166,227,161,0.6); }
+.center-diamond.y { color: #f9e2af; text-shadow: 0 0 5px rgba(249,226,175,0.6); }
+.center-diamond.r { color: #f38ba8; text-shadow: 0 0 5px rgba(243,139,168,0.6); }
+.center-diamond.legend { color: #cdd6f4; }
+
+.arrow { font-size: 12px; line-height: 20px; color: #6c7086; padding: 0 4px; display: inline-block; width: 12px; }
+
+/* =========================================================
+   SALES INFO PAGE SPECIFICS
+   ========================================================= */
+.sales-info-container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; }
+.sales-legend-row { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem; }
+.sales-icon-box { width: 50px; display: flex; justify-content: center; flex-shrink: 0; }
+.sales-legend-text { flex: 1; font-size: 1.05rem; color: #bac2de; line-height: 1.6; }
+.sales-highlight { color: #cdd6f4; font-weight: bold; }
+
+/* =========================================================
+   FINANCIAL INFO PAGE SPECIFICS
+   ========================================================= */
+.fin-info-container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; }
+.fin-legend-row { display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem; background: #1e1e2e; padding: 1.5rem; border-radius: 8px; border: 1px solid #45475a; }
+.fin-svg-container { width: 120px; height: 120px; flex-shrink: 0; background: #313244; border-radius: 50%; box-shadow: inset 0 2px 4px rgba(0,0,0,0.3); }
+.fin-legend-text { flex: 1; font-size: 1.05rem; color: #bac2de; line-height: 1.6; }
+.fin-highlight { color: #cdd6f4; font-weight: bold; }
